@@ -13,6 +13,8 @@ keycloak:
     realm: master
     username: admin
     password: admin
+  themes:
+    path: ./themes
     
 logging:
   level:
@@ -27,3 +29,5 @@ spring:
 
 keycloak:
   server-url: http://keycloak:8080
+  themes:
+    path: /app/themes

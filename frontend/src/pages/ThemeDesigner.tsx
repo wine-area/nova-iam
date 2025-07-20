@@ -23,7 +23,7 @@ import {
   PictureOutlined,
 } from '@ant-design/icons';
 import type { UploadFile } from 'antd/es/upload/interface';
-import { listRealms } from '@/services/realmService';
+import { getAllRealms } from '@/services/realmService';
 import {
   createTheme,
   deployTheme,
@@ -51,7 +51,7 @@ const ThemeDesigner: React.FC = () => {
 
   const loadRealms = async () => {
     try {
-      const realmList = await listRealms();
+      const realmList = await getAllRealms();
       setRealms(realmList);
     } catch (error) {
       message.error('Failed to load realms');

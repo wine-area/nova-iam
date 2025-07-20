@@ -3,10 +3,13 @@ package com.nova.iam.controller
 import com.nova.iam.dto.RealmDto
 import com.nova.iam.service.RealmService
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import jakarta.validation.Valid
 
 @RestController
 @RequestMapping("/api/realms")
+@Validated
 class RealmController(private val realmService: RealmService) {
 
     @GetMapping
@@ -27,7 +30,7 @@ class RealmController(private val realmService: RealmService) {
     }
 
     @PostMapping
-    fun createRealm(@RequestBody realmDto: RealmDto): ResponseEntity<RealmDto> {
+    fun createRealm(@RequestBody @Valid realmDto: RealmDto): ResponseEntity<RealmDto> {
         return try {
             val createdRealm = realmService.createRealm(realmDto)
             ResponseEntity.ok(createdRealm)

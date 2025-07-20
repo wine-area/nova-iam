@@ -39,6 +39,16 @@ export default defineConfig({
       component: './UserList',
     },
     {
+      name: 'Client Management',
+      path: '/realms/:realmName/clients',
+      component: './ClientList',
+    },
+    {
+      name: 'Role Management',
+      path: '/realms/:realmName/roles',
+      component: './RoleList',
+    },
+    {
       name: 'Theme Designer',
       path: '/theme-designer',
       component: './ThemeDesigner',

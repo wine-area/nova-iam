@@ -79,6 +79,12 @@ const RealmList: React.FC = () => {
           >
             Manage Clients
           </Button>
+          <Button
+            type="link"
+            href={`/realms/${record.realm}/roles`}
+          >
+            Manage Roles
+          </Button>
         </Space>
       ),
     },

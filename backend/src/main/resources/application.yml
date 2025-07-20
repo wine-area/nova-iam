@@ -1,0 +1,29 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: nova-iam-backend
+  profiles:
+    active: local
+
+keycloak:
+  server-url: http://localhost:8080
+  admin:
+    realm: master
+    username: admin
+    password: admin
+    
+logging:
+  level:
+    com.nova.iam: DEBUG
+    org.springframework.web: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+keycloak:
+  server-url: http://keycloak:8080

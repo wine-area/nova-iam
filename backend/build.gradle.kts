@@ -29,6 +29,10 @@ dependencies {
     // CORS support
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     
+    // Monitoring and Metrics
+    implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("io.micrometer:micrometer-core")
+    
     // Development
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     

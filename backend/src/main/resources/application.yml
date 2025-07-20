@@ -7,6 +7,26 @@ spring:
   profiles:
     active: local
 
+# Monitoring and Health Checks
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus,info
+  endpoint:
+    health:
+      show-details: when-authorized
+      show-components: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
 keycloak:
   server-url: http://localhost:8080
   admin:
@@ -20,6 +40,8 @@ logging:
   level:
     com.nova.iam: DEBUG
     org.springframework.web: DEBUG
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %X{traceId} - %logger{36} - %msg%n'
 
 ---
 spring:

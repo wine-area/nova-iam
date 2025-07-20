@@ -5,10 +5,13 @@ import com.nova.iam.dto.CreateClientRequest
 import com.nova.iam.dto.UpdateClientRequest
 import com.nova.iam.service.ClientService
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import jakarta.validation.Valid
 
 @RestController
 @RequestMapping("/api/realms/{realmName}/clients")
+@Validated
 class ClientController(private val clientService: ClientService) {
 
     @GetMapping
@@ -34,7 +37,7 @@ class ClientController(private val clientService: ClientService) {
     @PostMapping
     fun createClient(
         @PathVariable realmName: String,
-        @RequestBody request: CreateClientRequest
+        @RequestBody @Valid request: CreateClientRequest
     ): ResponseEntity<ClientDto> {
         return try {
             val client = clientService.createClient(realmName, request)

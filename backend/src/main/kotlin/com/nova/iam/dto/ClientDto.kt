@@ -1,9 +1,24 @@
 package com.nova.iam.dto
 
+import com.nova.iam.validation.ValidClientId
+import com.nova.iam.validation.SafeString
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
+import jakarta.validation.constraints.Pattern
+
 data class ClientDto(
     val id: String? = null,
+    
+    @field:NotBlank(message = "Client ID is required")
+    @field:ValidClientId
     val clientId: String,
+    
+    @field:SafeString
+    @field:Size(max = 255, message = "Name must not exceed 255 characters")
     val name: String? = null,
+    
+    @field:SafeString
+    @field:Size(max = 500, message = "Description must not exceed 500 characters")
     val description: String? = null,
     val enabled: Boolean = true,
     val clientAuthenticatorType: String = "client-secret",
@@ -31,8 +46,16 @@ data class ClientDto(
 )
 
 data class CreateClientRequest(
+    @field:NotBlank(message = "Client ID is required")
+    @field:ValidClientId
     val clientId: String,
+    
+    @field:SafeString
+    @field:Size(max = 255, message = "Name must not exceed 255 characters")
     val name: String? = null,
+    
+    @field:SafeString
+    @field:Size(max = 500, message = "Description must not exceed 500 characters")
     val description: String? = null,
     val enabled: Boolean = true,
     val redirectUris: List<String> = emptyList(),

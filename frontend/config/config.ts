@@ -9,6 +9,20 @@ export default defineConfig({
   layout: {
     title: 'Nova IAM',
   },
+  // Enable Qiankun plugin for micro-frontend support
+  qiankun: {
+    master: {
+      // Apps configuration will be dynamically loaded
+      apps: [],
+      // Enable sandbox to isolate sub-applications
+      sandbox: {
+        strictStyleIsolation: true,
+        experimentalStyleIsolation: true,
+      },
+      // Defer mounting to allow proper initialization
+      defer: true,
+    },
+  },
   routes: [
     {
       path: '/',
@@ -28,6 +42,19 @@ export default defineConfig({
       name: 'Theme Designer',
       path: '/theme-designer',
       component: './ThemeDesigner',
+    },
+    {
+      name: 'Applications',
+      path: '/apps',
+      component: './Applications',
+    },
+    // Micro-frontend routes will be handled dynamically
+    {
+      path: '/sub-app/*',
+      microApp: 'subApp',
+      microAppProps: {
+        autoSetLoading: true,
+      },
     },
   ],
   npmClient: 'npm',

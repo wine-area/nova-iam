@@ -48,6 +48,7 @@
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
     "@umijs/route-utils": "^4.0.1",
+    "@umijs/plugin-qiankun": "^2.37.0",
     "antd": "^5.12.8",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

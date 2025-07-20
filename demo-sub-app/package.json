@@ -1,0 +1,26 @@
+{
+  "name": "demo-sub-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo micro-frontend sub-application for Nova IAM",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-components": "^2.6.43",
+    "@umijs/plugin-qiankun": "^2.37.0",
+    "antd": "^5.12.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@umijs/max": "^4.0.84",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

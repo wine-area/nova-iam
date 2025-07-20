@@ -43,6 +43,8 @@ services:
       KEYCLOAK_ADMIN_USERNAME: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       SPRING_PROFILES_ACTIVE: docker
+    volumes:
+      - ./themes:/app/themes
     ports:
       - "8090:8090"
     depends_on:

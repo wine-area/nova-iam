@@ -129,3 +129,30 @@ class ValidRoleNameValidator : ConstraintValidator<ValidRoleName, String?> {
         return rolePattern.matcher(value).matches()
     }
 }
+
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER)
+@Retention(AnnotationRetention.RUNTIME)
+@Constraint(validatedBy = [ValidGroupNameValidator::class])
+annotation class ValidGroupName(
+    val message: String = "Invalid group name format",
+    val groups: Array<KClass<*>> = [],
+    val payload: Array<KClass<out Payload>> = []
+)
+
+class ValidGroupNameValidator : ConstraintValidator<ValidGroupName, String?> {
+    
+    // Group names should be simple identifiers, similar to roles but allowing forward slashes for hierarchy
+    private val groupPattern = Pattern.compile("^[a-zA-Z0-9][a-zA-Z0-9\\-_:/]*[a-zA-Z0-9]$|^[a-zA-Z0-9]$")
+    
+    override fun isValid(value: String?, context: ConstraintValidatorContext?): Boolean {
+        if (value == null) return true
+        
+        // Must be between 1 and 100 characters
+        if (value.length < 1 || value.length > 100) {
+            return false
+        }
+        
+        // Must match group pattern
+        return groupPattern.matcher(value).matches()
+    }
+}

@@ -39,6 +39,11 @@ export default defineConfig({
       component: './UserList',
     },
     {
+      name: 'Client Management',
+      path: '/realms/:realmName/clients',
+      component: './ClientList',
+    },
+    {
       name: 'Theme Designer',
       path: '/theme-designer',
       component: './ThemeDesigner',

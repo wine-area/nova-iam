@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageContainer, ProTable, ProColumns } from '@ant-design/pro-components';
-import { Button, Modal, Form, Input, Switch, message } from 'antd';
+import { Button, Modal, Form, Input, Switch, message, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { RealmDto, getAllRealms, createRealm } from '@/services/realmService';
 
@@ -66,12 +66,20 @@ const RealmList: React.FC = () => {
       title: 'Actions',
       key: 'actions',
       render: (_, record) => (
-        <Button
-          type="link"
-          href={`/realms/${record.realm}/users`}
-        >
-          Manage Users
-        </Button>
+        <Space>
+          <Button
+            type="link"
+            href={`/realms/${record.realm}/users`}
+          >
+            Manage Users
+          </Button>
+          <Button
+            type="link"
+            href={`/realms/${record.realm}/clients`}
+          >
+            Manage Clients
+          </Button>
+        </Space>
       ),
     },
   ];

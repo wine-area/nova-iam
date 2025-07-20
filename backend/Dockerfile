@@ -2,13 +2,12 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle.kts .
-COPY src src
+# Copy pre-built JAR instead of building inside Docker
+COPY build/libs/*.jar app.jar
 
-RUN chmod +x ./gradlew && ./gradlew build -x test
+# Create themes directory
+RUN mkdir -p /app/themes
 
 EXPOSE 8090
 
-CMD ["java", "-jar", "build/libs/nova-iam-backend-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
